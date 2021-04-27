@@ -71,9 +71,12 @@ def main(args):
             results.add_output(path, name)
         except DataError, err:
             _exit(err, error=True)
-    reporter = DiffReporter(opts['report'], opts['title'],
-        opts['include'].lower() == "True".lower(),
-        opts['exclude'].lower() == 'True'.lower())
+
+    reporter = DiffReporter(
+        opts['report'],
+        opts['title'],
+        opts['include'] == "true",
+        opts['exclude'] == "true")
     reporter.report(results)
     _exit('Report: %s' % reporter.outpath)
 
